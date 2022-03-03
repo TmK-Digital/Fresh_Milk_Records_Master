@@ -1,0 +1,30 @@
+
+
+Options -Indexes
+
+Options -MultiViews
+
+RewriteEngine on
+Options +FollowSymlinks
+
+RewriteEngine on
+
+# remove .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# rewrite index page
+RewriteRule ^home index.php [NC,L]
+RewriteRule ^music music.php [NC,L]
+RewriteRule ^merchandise merchandise.php [NC,L]
+RewriteRule ^contactus contact.php [NC,L]
+RewriteRule ^freedownloads free-download.php [NC,L]
+
+
+RewriteRule ^([^.]+)$ $1.php [NC,L]
+
+# block access to htaccess file
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
